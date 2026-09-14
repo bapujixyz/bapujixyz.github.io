@@ -1,0 +1,13 @@
+title: Bapu Ji
+description: Bapuji's Random Unfiltered Hullabaloo (BRUH!)
+url: https://bapuji.xyz
+baseurl: ""
+
+# GitHub Pages serves this repo with Jekyll. Keep Jekyll enabled
+# (Settings → Pages → Deploy from a branch). Do not add a .nojekyll file.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - files/README.md
+  - vendor
