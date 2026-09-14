@@ -6,16 +6,11 @@
 #   description:  required — one short sentence
 #   url:          required — https://… or /files/name.pdf
 #   date:         optional — YYYY-MM-DD
-#   example:      optional — true marks a placeholder (remove these)
 
-- title: "Example: a web link"
-  description: "Placeholder. Replace this entry with a real page you want to share."
-  url: https://example.com
-  date: 2026-09-14
-  example: true
+- title: Dark Traits Activated by Divorce
+  description: PDF on the site
+  url: /files/Dark%20Traits%20Activated%20by%20Divorce.pdf
 
-- title: "Example: a PDF in files/"
-  description: "Placeholder. Put PDFs in files/ and link them as /files/name.pdf."
-  url: /files/example.pdf
-  date: 2026-09-14
-  example: true
+- title: The Anti-Alienation Project
+  description: YouTube channel
+  url: https://www.youtube.com/@TheAnti-AlienationProject/videos

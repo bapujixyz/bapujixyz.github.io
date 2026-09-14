@@ -1,8 +1,6 @@
-# Bapu Ji — bapuji.xyz
+# From Bapu Ji with Love
 
-WJKK WJKF
-
-Personal homepage for **[bapuji.xyz](https://bapuji.xyz)**. This is a small GitHub Pages site: add a PDF or a web link with a short description, commit, and it shows up on the homepage.
+Personal homepage for **[bapuji.xyz](https://bapuji.xyz)**. This GitHub Pages site lists a few files and links.
 
 ## Custom domain
 
@@ -10,34 +8,28 @@ The domain `bapuji.xyz` is already verified for this repo. GitHub Pages reads it
 
 ## How to add a PDF
 
-1. Copy the PDF into `files/`, for example `files/notes.pdf`.
-2. Open `_data/links.yml` and add an entry. The public URL is `/files/notes.pdf`:
+1. Copy the PDF into `files/`.
+2. Open `_data/links.yml` and add an entry. Encode spaces in the public URL (`%20`):
 
 ```yaml
-- title: Notes
-  description: Short description of the file.
-  url: /files/notes.pdf
-  date: 2026-09-14
+- title: Dark Traits Activated by Divorce
+  description: PDF on the site
+  url: /files/Dark%20Traits%20Activated%20by%20Divorce.pdf
 ```
 
-3. Commit and push. After Pages rebuilds, the file is at `https://bapuji.xyz/files/notes.pdf` and the homepage lists it.
-
-See `files/README.md` for the same convention.
+3. Commit and push. After Pages rebuilds, the homepage lists it.
 
 ## How to add a web link
 
 Edit `_data/links.yml` only — no HTML changes:
 
 ```yaml
-- title: A page worth reading
-  description: One short sentence about why it is here.
-  url: https://example.org/article
-  date: 2026-09-14
+- title: The Anti-Alienation Project
+  description: YouTube channel
+  url: https://www.youtube.com/@TheAnti-AlienationProject/videos
 ```
 
 `date` is optional. Newest-looking order is just the order of entries in the YAML file; put the items you want first at the top.
-
-Delete the two `example: true` placeholders once you have real entries.
 
 ## Where things live
 

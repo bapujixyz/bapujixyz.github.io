@@ -13,12 +13,8 @@ layout: null
 <body>
   <div class="wrap">
     <header>
-      <p class="greeting">WJKK WJKF</p>
       <h1>{{ site.title }}</h1>
-      <p class="tagline">{{ site.description }}</p>
     </header>
-
-    <p class="lede">A small list of files and links.</p>
 
     <ul class="links">
       {% for item in site.data.links %}
@@ -27,7 +23,6 @@ layout: null
           {% assign external = false %}
           {% if item.url contains "://" %}{% assign external = true %}{% endif %}
           <a href="{{ item.url }}"{% if external %} rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>
-          {% if item.example %}<span class="badge">example</span>{% endif %}
         </p>
         <p class="item-desc">{{ item.description }}</p>
         {% if item.date %}
@@ -39,7 +34,6 @@ layout: null
 
     <footer>
       <p class="quote">“It ain't what you don't know but what you know that just ain't so.”</p>
-      <p class="domain">bapuji.xyz</p>
     </footer>
   </div>
 </body>

@@ -5,8 +5,6 @@
   --link: #7a341f;
   --link-hover: #4e1f12;
   --rule: #ddd6cc;
-  --badge-bg: #efe6d6;
-  --badge-text: #6a5428;
 }
 
 * {
@@ -36,29 +34,11 @@ header {
   margin-bottom: 2rem;
 }
 
-.greeting {
-  margin: 0 0 0.85rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
 h1 {
   margin: 0;
   font-size: 2.15rem;
   font-weight: normal;
   letter-spacing: 0.02em;
-}
-
-.tagline {
-  margin: 0.5rem 0 0;
-  color: var(--muted);
-}
-
-.lede {
-  margin: 0 0 1.5rem;
-  color: var(--muted);
 }
 
 .links {
@@ -104,20 +84,6 @@ a:focus-visible {
   color: var(--link-hover);
 }
 
-.badge {
-  display: inline-block;
-  margin-left: 0.4rem;
-  padding: 0.05rem 0.4rem;
-  border-radius: 999px;
-  background: var(--badge-bg);
-  color: var(--badge-text);
-  font-family: system-ui, sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-
 footer {
   margin-top: 2.5rem;
   text-align: center;
@@ -129,17 +95,12 @@ footer {
   font-style: italic;
 }
 
-.domain {
-  margin: 1rem 0 0;
-  font-size: 0.85rem;
-}
-
 @media (max-width: 520px) {
   html {
     font-size: 17px;
   }
 
   h1 {
-    font-size: 1.85rem;
+    font-size: 1.7rem;
   }
 }
