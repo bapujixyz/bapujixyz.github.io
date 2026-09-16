@@ -3,22 +3,18 @@
 #
 # Fields:
 #   title:        required — link text
-#   description:  required — one short sentence
 #   url:          required — https://… or /files/name.pdf
 #   date:         optional — YYYY-MM-DD
 
+
 - title: Dark Traits Activated by Divorce
-  description: PDF on the site
   url: /files/Dark%20Traits%20Activated%20by%20Divorce.pdf
 
 - title: The Anti-Alienation Project
-  description: YouTube channel
   url: https://www.youtube.com/@TheAnti-AlienationProject/videos
 
 - title: Psychobabble with Spier
-  description: YouTube channel
   url: https://www.youtube.com/@psychobabblewithspier
 
 - title: Dr. Josef Witt-Doerring's YouTube channel on dangers of psychiatric medications
-  description: YouTube channel
   url: https://www.youtube.com/@taperclinic
