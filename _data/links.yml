@@ -5,6 +5,7 @@
 #   title:        required — link text
 #   url:          required — https://… or /files/name.pdf
 #   date:         optional — YYYY-MM-DD
+#   thumbnail:    optional — image URL shown below the link
 
 
 - title: Dark Traits Activated by Divorce
@@ -18,3 +19,7 @@
 
 - title: Dr. Josef Witt-Doerring's YouTube channel on dangers of psychiatric medications
   url: https://www.youtube.com/@taperclinic
+
+- title: "Is Gender Dysphoria Ego-Syntonic or Ego-Dystonic? Therapist + Detransitioner Explain"
+  url: https://www.youtube.com/watch?v=YmXreDkYQuQ
+  thumbnail: https://i.ytimg.com/vi/YmXreDkYQuQ/hqdefault.jpg

@@ -25,6 +25,9 @@ layout: null
           {% if item.url contains "://" %}{% assign external = true %}{% endif %}
           <a href="{{ item.url }}"{% if external %} rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>
         </p>
+        {% if item.thumbnail %}
+        <p class="item-thumb"><a href="{{ item.url }}" rel="noopener noreferrer"><img src="{{ item.thumbnail }}" alt="{{ item.title }}" loading="lazy"></a></p>
+        {% endif %}
         {% if item.date %}
         <p class="item-date"><time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %-d, %Y" }}</time></p>
         {% endif %}
