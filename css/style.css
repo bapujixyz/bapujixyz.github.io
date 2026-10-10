@@ -104,3 +104,6 @@ footer {
     font-size: 1.7rem;
   }
 }
+
+.item-thumb { margin: 0.5rem 0 0; }
+.item-thumb img { display: block; max-width: 100%; width: 480px; height: auto; border-radius: 6px; }
