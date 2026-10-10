@@ -6,6 +6,7 @@
 #   url:          required — https://… or /files/name.pdf
 #   date:         optional — YYYY-MM-DD
 #   thumbnail:    optional — image URL shown below the link
+#   embed:        optional — YouTube video id; embeds a player below the link
 
 
 - title: Dark Traits Activated by Divorce
@@ -22,4 +23,4 @@
 
 - title: "Is Gender Dysphoria Ego-Syntonic or Ego-Dystonic? Therapist + Detransitioner Explain"
   url: https://www.youtube.com/watch?v=YmXreDkYQuQ
-  thumbnail: https://i.ytimg.com/vi/YmXreDkYQuQ/hqdefault.jpg
+  embed: YmXreDkYQuQ
