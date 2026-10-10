@@ -25,9 +25,6 @@ layout: null
           {% if item.url contains "://" %}{% assign external = true %}{% endif %}
           <a href="{{ item.url }}"{% if external %} rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>
         </p>
-        {% if item.embed %}
-        <div class="item-embed"><iframe src="https://www.youtube-nocookie.com/embed/{{ item.embed }}" title="{{ item.title }}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-        {% endif %}
         {% if item.thumbnail %}
         <p class="item-thumb"><a href="{{ item.url }}" rel="noopener noreferrer"><img src="{{ item.thumbnail }}" alt="{{ item.title }}" loading="lazy"></a></p>
         {% endif %}
