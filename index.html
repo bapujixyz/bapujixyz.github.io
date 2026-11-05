@@ -23,7 +23,7 @@ layout: null
         <p class="item-title">
           {% assign external = false %}
           {% if item.url contains "://" %}{% assign external = true %}{% endif %}
-          <a href="{{ item.url }}"{% if external %} rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>
+          <a href="{{ item.url }}"{% if external %} rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>{% if item.type %} <span class="item-type">[{{ item.type }}]</span>{% endif %}
         </p>
         {% if item.thumbnail %}
         <p class="item-thumb{% if item.thumbnail_full %} item-thumb--full{% endif %}"><a href="{{ item.url }}" rel="noopener noreferrer"><img src="{{ item.thumbnail }}" alt="{{ item.thumbnail_alt | default: item.title }}" loading="lazy"></a></p>
