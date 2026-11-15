@@ -1,6 +1,6 @@
 # From Bapu Ji with Love
 
-Personal homepage for **[bapuji.xyz](https://bapuji.xyz)**. This GitHub Pages site lists a few files and links.
+Personal homepage for **[bapuji.xyz](https://bapuji.xyz)**. This GitHub Pages site lists a few files and links, plus a live Bitcoin dashboard at **[/bitcoin](https://bapuji.xyz/bitcoin)**.
 
 ## Custom domain
 
@@ -31,14 +31,56 @@ Edit `_data/links.yml` only — no HTML changes:
 
 `date` is optional. Newest-looking order is just the order of entries in the YAML file; put the items you want first at the top.
 
+## Bitcoin dashboard
+
+Live page: **[bapuji.xyz/bitcoin](https://bapuji.xyz/bitcoin)**
+
+A static page that loads market and network data in the browser (no backend, no API keys).
+
+### What it shows
+
+| Section | Fields | Source |
+| --- | --- | --- |
+| Hero | Spot USD price, 24h % change, last update time | [CoinGecko](https://www.coingecko.com/) |
+| Market | Market cap, 24h volume, ATH, circulating supply | CoinGecko |
+| Price chart | 1D / 7D / 30D / 1Y line chart | CoinGecko `market_chart` |
+| Network | Next-block fee, mempool size, hashrate, difficulty | [mempool.space](https://mempool.space/) |
+
+Market and network numbers refresh about every **60 seconds**. Chart range buttons refetch only when clicked. If a chart request fails (for example a temporary rate limit), the previous chart stays on screen.
+
+### Files
+
+| Path | Role |
+| --- | --- |
+| `bitcoin/index.html` | Page markup (Jekyll serves it at `/bitcoin/`) |
+| `css/bitcoin.css` | Dashboard layout on top of the shared site styles |
+| `js/bitcoin.js` | Fetches APIs, formats numbers, draws the canvas chart |
+| `_data/links.yml` | Homepage entry linking to `/bitcoin/` |
+
+### Local preview
+
+With Jekyll running (`bundle exec jekyll serve`), open <http://127.0.0.1:4000/bitcoin/>.
+
+The dashboard calls public HTTPS APIs from the browser, so it needs network access. CoinGecko may throttle if you refresh too often.
+
+### Changing behavior
+
+- Refresh interval: `refreshMs` in `js/bitcoin.js` (default `60000`)
+- Default chart range: `chartDays` in `js/bitcoin.js` (default `7`)
+- Labels / sections: edit `bitcoin/index.html`
+- Look and spacing: edit `css/bitcoin.css` (shared colors stay in `css/style.css`)
+
 ## Where things live
 
 | Path | What it is |
 | --- | --- |
 | `_data/links.yml` | Single source of truth for the homepage list |
+| `bitcoin/` | Live Bitcoin dashboard (`/bitcoin/`) |
+| `css/bitcoin.css` | Bitcoin dashboard styles |
+| `js/bitcoin.js` | Bitcoin dashboard client script |
 | `files/` | PDFs and other files, linked as `/files/name.pdf` |
 | `index.html` | Homepage template (Jekyll Liquid) |
-| `css/style.css` | Minimal layout styles |
+| `css/style.css` | Shared layout styles |
 | `CNAME` | Custom domain `bapuji.xyz` |
 
 ## GitHub Pages / Jekyll
@@ -60,4 +102,4 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Then open <http://127.0.0.1:4000/>. GitHub Pages uses its own Jekyll version when you deploy from a branch; the Gemfile is only for previewing locally.
+Then open <http://127.0.0.1:4000/> (dashboard at <http://127.0.0.1:4000/bitcoin/>). GitHub Pages uses its own Jekyll version when you deploy from a branch; the Gemfile is only for previewing locally.
