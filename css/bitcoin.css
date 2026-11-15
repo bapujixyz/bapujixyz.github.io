@@ -1,0 +1,213 @@
+.btc-page {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(122, 52, 31, 0.08), transparent 55%),
+    linear-gradient(180deg, #faf7f2 0%, var(--bg) 40%, #f0ebe3 100%);
+  min-height: 100vh;
+}
+
+.btc-wrap {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3.5rem;
+}
+
+.btc-nav {
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.btc-hero {
+  text-align: center;
+  margin-bottom: 2.75rem;
+  animation: btc-fade-up 0.7s ease both;
+}
+
+.btc-brand {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.btc-price {
+  margin: 0.55rem 0 0;
+  font-size: clamp(2.6rem, 9vw, 3.75rem);
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+}
+
+.btc-change {
+  margin: 0.65rem 0 0;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  min-height: 1.5em;
+}
+
+.btc-change.is-up {
+  color: #2f6b3a;
+}
+
+.btc-change.is-down {
+  color: #8a2f24;
+}
+
+.btc-updated {
+  margin: 0.45rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.btc-section {
+  margin-bottom: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  animation: btc-fade-up 0.75s ease both;
+  animation-delay: 0.12s;
+}
+
+.btc-section:nth-of-type(2) {
+  animation-delay: 0.22s;
+}
+
+.btc-section:nth-of-type(3) {
+  animation-delay: 0.32s;
+}
+
+.btc-section h2 {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  font-weight: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.btc-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem 1.5rem;
+  margin: 0;
+}
+
+.btc-stats dt {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.btc-stats dd {
+  margin: 0.2rem 0 0;
+  font-size: 1.12rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.btc-chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.btc-chart-head h2 {
+  margin: 0;
+}
+
+.btc-range {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.btc-range-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  padding: 0.28rem 0.55rem;
+  cursor: pointer;
+}
+
+.btc-range-btn:hover,
+.btc-range-btn:focus-visible {
+  color: var(--text);
+  outline: none;
+}
+
+.btc-range-btn.is-active {
+  color: var(--link);
+  border-color: var(--rule);
+}
+
+.btc-chart-frame {
+  position: relative;
+  width: 100%;
+  min-height: 12rem;
+}
+
+#btc-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.btc-chart-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.btc-chart-empty[hidden] {
+  display: none;
+}
+
+.btc-foot {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.btc-foot p {
+  margin: 0;
+}
+
+@keyframes btc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .btc-stats {
+    gap: 1rem 1rem;
+  }
+
+  .btc-stats dd {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btc-hero,
+  .btc-section {
+    animation: none;
+  }
+}

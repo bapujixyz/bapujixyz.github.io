@@ -1,0 +1,93 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bitcoin — {{ site.title }}</title>
+  <meta name="description" content="Live Bitcoin price, market data, and network stats.">
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/bitcoin.css' | relative_url }}">
+</head>
+<body class="btc-page">
+  <div class="btc-wrap">
+    <nav class="btc-nav">
+      <a href="{{ '/' | relative_url }}">← {{ site.title }}</a>
+    </nav>
+
+    <header class="btc-hero">
+      <p class="btc-brand">Bitcoin</p>
+      <p class="btc-price" id="btc-price" aria-live="polite">—</p>
+      <p class="btc-change" id="btc-change">Loading market data…</p>
+      <p class="btc-updated" id="btc-updated"></p>
+    </header>
+
+    <section class="btc-section" aria-labelledby="market-heading">
+      <h2 id="market-heading">Market</h2>
+      <dl class="btc-stats" id="btc-market">
+        <div>
+          <dt>Market cap</dt>
+          <dd id="btc-mcap">—</dd>
+        </div>
+        <div>
+          <dt>24h volume</dt>
+          <dd id="btc-vol">—</dd>
+        </div>
+        <div>
+          <dt>Ath</dt>
+          <dd id="btc-ath">—</dd>
+        </div>
+        <div>
+          <dt>Circulating</dt>
+          <dd id="btc-supply">—</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="btc-section" aria-labelledby="chart-heading">
+      <div class="btc-chart-head">
+        <h2 id="chart-heading">Price</h2>
+        <div class="btc-range" role="group" aria-label="Chart range">
+          <button type="button" class="btc-range-btn is-active" data-days="1">1D</button>
+          <button type="button" class="btc-range-btn" data-days="7">7D</button>
+          <button type="button" class="btc-range-btn" data-days="30">30D</button>
+          <button type="button" class="btc-range-btn" data-days="365">1Y</button>
+        </div>
+      </div>
+      <div class="btc-chart-frame">
+        <canvas id="btc-chart" width="800" height="320" aria-label="Bitcoin price chart"></canvas>
+        <p class="btc-chart-empty" id="btc-chart-empty" hidden>Chart unavailable right now.</p>
+      </div>
+    </section>
+
+    <section class="btc-section" aria-labelledby="network-heading">
+      <h2 id="network-heading">Network</h2>
+      <dl class="btc-stats" id="btc-network">
+        <div>
+          <dt>Fee (next block)</dt>
+          <dd id="btc-fee">—</dd>
+        </div>
+        <div>
+          <dt>Mempool</dt>
+          <dd id="btc-mempool">—</dd>
+        </div>
+        <div>
+          <dt>Hashrate</dt>
+          <dd id="btc-hashrate">—</dd>
+        </div>
+        <div>
+          <dt>Difficulty</dt>
+          <dd id="btc-difficulty">—</dd>
+        </div>
+      </dl>
+    </section>
+
+    <footer class="btc-foot">
+      <p>Prices via <a href="https://www.coingecko.com/" rel="noopener noreferrer">CoinGecko</a>. Network via <a href="https://mempool.space/" rel="noopener noreferrer">mempool.space</a>. Refreshes every 60s.</p>
+    </footer>
+  </div>
+  <script src="{{ '/js/bitcoin.js' | relative_url }}" defer></script>
+</body>
+</html>
