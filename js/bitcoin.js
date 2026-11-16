@@ -3,15 +3,11 @@
 
   var COINGECKO =
     "https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false";
-  var CHART =
-    "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=";
   var MEMPOOL_FEES = "https://mempool.space/api/v1/fees/recommended";
   var MEMPOOL_STATS = "https://mempool.space/api/mempool";
   var HASHRATE = "https://mempool.space/api/v1/mining/hashrate/3d";
 
   var refreshMs = 60000;
-  var chartDays = 7;
-  var chartPoints = [];
   var reduceMotion =
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -28,8 +24,6 @@
     mempool: document.getElementById("btc-mempool"),
     hashrate: document.getElementById("btc-hashrate"),
     difficulty: document.getElementById("btc-difficulty"),
-    chart: document.getElementById("btc-chart"),
-    chartEmpty: document.getElementById("btc-chart-empty"),
   };
 
   function money(n) {
@@ -157,128 +151,10 @@
       var mining = results[2].value;
       var current = mining.currentHashrate;
       var diff = mining.currentDifficulty;
-      // API returns H/s; convert to EH/s
       var eh = current != null ? current / 1e18 : null;
       setText(el.hashrate, formatHashrate(eh));
       setText(el.difficulty, formatDifficulty(diff));
     }
-  }
-
-  async function loadChart(days) {
-    chartDays = days;
-    el.chartEmpty.hidden = true;
-    var data = await getJson(CHART + encodeURIComponent(String(days)));
-    var next = (data.prices || []).map(function (pair) {
-      return { t: pair[0], p: pair[1] };
-    });
-    if (!next.length) {
-      if (!chartPoints.length) el.chartEmpty.hidden = false;
-      return;
-    }
-    chartPoints = next;
-    drawChart();
-  }
-
-  function drawChart() {
-    var canvas = el.chart;
-    if (!canvas || !canvas.getContext) return;
-
-    var ctx = canvas.getContext("2d");
-    var dpr = window.devicePixelRatio || 1;
-    var cssW = canvas.clientWidth || 800;
-    var cssH = Math.max(180, Math.round(cssW * 0.4));
-    canvas.width = Math.round(cssW * dpr);
-    canvas.height = Math.round(cssH * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    ctx.clearRect(0, 0, cssW, cssH);
-
-    if (!chartPoints.length) {
-      el.chartEmpty.hidden = false;
-      return;
-    }
-    el.chartEmpty.hidden = true;
-
-    var pad = { t: 12, r: 8, b: 22, l: 8 };
-    var w = cssW - pad.l - pad.r;
-    var h = cssH - pad.t - pad.b;
-    var prices = chartPoints.map(function (p) {
-      return p.p;
-    });
-    var min = Math.min.apply(null, prices);
-    var max = Math.max.apply(null, prices);
-    var span = max - min || 1;
-
-    function xAt(i) {
-      return pad.l + (i / (chartPoints.length - 1 || 1)) * w;
-    }
-    function yAt(p) {
-      return pad.t + (1 - (p - min) / span) * h;
-    }
-
-    var up = chartPoints[chartPoints.length - 1].p >= chartPoints[0].p;
-    var stroke = up ? "#2f6b3a" : "#8a2f24";
-    var styles = getComputedStyle(document.documentElement);
-    var rule = styles.getPropertyValue("--rule").trim() || "#ddd6cc";
-    var muted = styles.getPropertyValue("--muted").trim() || "#5e5a54";
-
-    ctx.strokeStyle = rule;
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(pad.l, pad.t + h);
-    ctx.lineTo(pad.l + w, pad.t + h);
-    ctx.stroke();
-
-    // Soft fill under the line
-    var grad = ctx.createLinearGradient(0, pad.t, 0, pad.t + h);
-    grad.addColorStop(0, up ? "rgba(47, 107, 58, 0.16)" : "rgba(138, 47, 36, 0.14)");
-    grad.addColorStop(1, "rgba(0,0,0,0)");
-    ctx.beginPath();
-    chartPoints.forEach(function (pt, i) {
-      var x = xAt(i);
-      var y = yAt(pt.p);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    });
-    ctx.lineTo(xAt(chartPoints.length - 1), pad.t + h);
-    ctx.lineTo(xAt(0), pad.t + h);
-    ctx.closePath();
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    ctx.beginPath();
-    chartPoints.forEach(function (pt, i) {
-      var x = xAt(i);
-      var y = yAt(pt.p);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    });
-    ctx.strokeStyle = stroke;
-    ctx.lineWidth = 2;
-    ctx.lineJoin = "round";
-    ctx.stroke();
-
-    ctx.fillStyle = muted;
-    ctx.font = '12px Georgia, "Times New Roman", serif';
-    ctx.textAlign = "left";
-    ctx.fillText(money(max), pad.l, 11);
-    ctx.textAlign = "right";
-    ctx.fillText(money(min), pad.l + w, pad.t + h + 16);
-  }
-
-  function bindRange() {
-    var buttons = document.querySelectorAll(".btc-range-btn");
-    buttons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        buttons.forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
-        });
-        loadChart(Number(btn.getAttribute("data-days"))).catch(function () {
-          // Keep the previous chart if a range fetch fails (e.g. rate limit).
-          if (!chartPoints.length) el.chartEmpty.hidden = false;
-        });
-      });
-    });
   }
 
   async function refresh() {
@@ -296,40 +172,12 @@
   }
 
   function init() {
-    bindRange();
-    // Default chart to 7D; mark button
-    document.querySelectorAll(".btc-range-btn").forEach(function (btn) {
-      btn.classList.toggle(
-        "is-active",
-        Number(btn.getAttribute("data-days")) === chartDays
-      );
-    });
-
     refresh();
-    loadChart(chartDays).catch(function () {
-      el.chartEmpty.hidden = false;
-    });
-
     window.setInterval(refresh, refreshMs);
-    window.addEventListener(
-      "resize",
-      debounce(function () {
-        drawChart();
-      }, 120)
-    );
 
-    if (!reduceMotion) {
-      // gentle pulse on price after first paint updates
+    if (!reduceMotion && el.price) {
       el.price.style.transition = "opacity 0.35s ease";
     }
-  }
-
-  function debounce(fn, wait) {
-    var t;
-    return function () {
-      clearTimeout(t);
-      t = setTimeout(fn, wait);
-    };
   }
 
   if (document.readyState === "loading") {
