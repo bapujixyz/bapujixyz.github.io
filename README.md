@@ -43,10 +43,10 @@ A static page that loads market and network data in the browser (no backend, no 
 | --- | --- | --- |
 | Hero | Spot USD price, 24h % change, last update time | [CoinGecko](https://www.coingecko.com/) |
 | Market | Market cap, 24h volume, ATH, circulating supply | CoinGecko |
-| Price chart | 1D / 7D / 30D / 1Y line chart | CoinGecko `market_chart` |
+| Price chart | Interactive hollow-candle chart (`BITSTAMP:BTCUSD`) | [TradingView](https://www.tradingview.com/) Advanced Chart widget (`style: "9"`) |
 | Network | Next-block fee, mempool size, hashrate, difficulty | [mempool.space](https://mempool.space/) |
 
-Market and network numbers refresh about every **60 seconds**. Chart range buttons refetch only when clicked. If a chart request fails (for example a temporary rate limit), the previous chart stays on screen.
+Market and network numbers refresh about every **60 seconds**. The chart is a TradingView embed (hollow candles); interval and range use TradingView’s own toolbar.
 
 ### Files
 
@@ -54,19 +54,19 @@ Market and network numbers refresh about every **60 seconds**. Chart range butto
 | --- | --- |
 | `bitcoin/index.html` | Page markup (Jekyll serves it at `/bitcoin/`) |
 | `css/bitcoin.css` | Dashboard layout on top of the shared site styles |
-| `js/bitcoin.js` | Fetches APIs, formats numbers, draws the canvas chart |
+| `js/bitcoin.js` | Fetches CoinGecko / mempool APIs and formats market + network stats |
 | `_data/links.yml` | Homepage entry linking to `/bitcoin/` |
 
 ### Local preview
 
 With Jekyll running (`bundle exec jekyll serve`), open <http://127.0.0.1:4000/bitcoin/>.
 
-The dashboard calls public HTTPS APIs from the browser, so it needs network access. CoinGecko may throttle if you refresh too often.
+The dashboard calls public HTTPS APIs and the TradingView widget script from the browser, so it needs network access. CoinGecko may throttle if you refresh too often.
 
 ### Changing behavior
 
 - Refresh interval: `refreshMs` in `js/bitcoin.js` (default `60000`)
-- Default chart range: `chartDays` in `js/bitcoin.js` (default `7`)
+- Chart symbol / hollow candles / theme: the JSON config inside the TradingView `<script>` in `bitcoin/index.html` (`style: "9"` = hollow candles)
 - Labels / sections: edit `bitcoin/index.html`
 - Look and spacing: edit `css/bitcoin.css` (shared colors stay in `css/style.css`)
 

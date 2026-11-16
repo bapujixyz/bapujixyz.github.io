@@ -46,19 +46,41 @@ layout: null
       </dl>
     </section>
 
-    <section class="btc-section" aria-labelledby="chart-heading">
+    <section class="btc-section btc-section--chart" aria-labelledby="chart-heading">
       <div class="btc-chart-head">
         <h2 id="chart-heading">Price</h2>
-        <div class="btc-range" role="group" aria-label="Chart range">
-          <button type="button" class="btc-range-btn is-active" data-days="1">1D</button>
-          <button type="button" class="btc-range-btn" data-days="7">7D</button>
-          <button type="button" class="btc-range-btn" data-days="30">30D</button>
-          <button type="button" class="btc-range-btn" data-days="365">1Y</button>
-        </div>
       </div>
-      <div class="btc-chart-frame">
-        <canvas id="btc-chart" width="800" height="320" aria-label="Bitcoin price chart"></canvas>
-        <p class="btc-chart-empty" id="btc-chart-empty" hidden>Chart unavailable right now.</p>
+      <div class="btc-chart-frame" aria-label="Bitcoin hollow candle chart from TradingView">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright">
+            <a href="https://www.tradingview.com/symbols/BITSTAMP-BTCUSD/" rel="noopener nofollow" target="_blank">
+              <span class="blue-text">BTCUSD chart</span>
+            </a>
+            by TradingView
+          </div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+          {
+            "autosize": true,
+            "symbol": "BITSTAMP:BTCUSD",
+            "interval": "60",
+            "timezone": "America/Los_Angeles",
+            "theme": "light",
+            "style": "9",
+            "locale": "en",
+            "backgroundColor": "rgba(247, 244, 239, 1)",
+            "gridColor": "rgba(221, 214, 204, 0.45)",
+            "hide_top_toolbar": false,
+            "hide_legend": false,
+            "allow_symbol_change": false,
+            "calendar": false,
+            "hide_volume": false,
+            "support_host": "https://www.tradingview.com"
+          }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
       </div>
     </section>
 
@@ -85,7 +107,7 @@ layout: null
     </section>
 
     <footer class="btc-foot">
-      <p>Prices via <a href="https://www.coingecko.com/" rel="noopener noreferrer">CoinGecko</a>. Network via <a href="https://mempool.space/" rel="noopener noreferrer">mempool.space</a>. Refreshes every 60s.</p>
+      <p>Prices via <a href="https://www.coingecko.com/" rel="noopener noreferrer">CoinGecko</a>. Chart via <a href="https://www.tradingview.com/" rel="noopener noreferrer">TradingView</a> (hollow candles). Network via <a href="https://mempool.space/" rel="noopener noreferrer">mempool.space</a>. Stats refresh every 60s.</p>
     </footer>
   </div>
   <script src="{{ '/js/bitcoin.js' | relative_url }}" defer></script>

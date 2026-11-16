@@ -6,7 +6,7 @@
 }
 
 .btc-wrap {
-  max-width: 42rem;
+  max-width: 48rem;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3.5rem;
 }
@@ -117,58 +117,34 @@
   margin: 0;
 }
 
-.btc-range {
-  display: flex;
-  gap: 0.35rem;
-}
-
-.btc-range-btn {
-  appearance: none;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--muted);
-  font: inherit;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  padding: 0.28rem 0.55rem;
-  cursor: pointer;
-}
-
-.btc-range-btn:hover,
-.btc-range-btn:focus-visible {
-  color: var(--text);
-  outline: none;
-}
-
-.btc-range-btn.is-active {
-  color: var(--link);
-  border-color: var(--rule);
-}
-
 .btc-chart-frame {
   position: relative;
   width: 100%;
-  min-height: 12rem;
+  height: 28rem;
+  overflow: hidden;
 }
 
-#btc-chart {
-  display: block;
+.tradingview-widget-container {
+  height: 100%;
   width: 100%;
-  height: auto;
 }
 
-.btc-chart-empty {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  margin: 0;
+.tradingview-widget-container__widget {
+  height: calc(100% - 1.75rem);
+  width: 100%;
+}
+
+.tradingview-widget-copyright {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
   color: var(--muted);
-  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.4;
 }
 
-.btc-chart-empty[hidden] {
-  display: none;
+.tradingview-widget-copyright .blue-text {
+  color: var(--link);
 }
 
 .btc-foot {
@@ -202,6 +178,10 @@
 
   .btc-stats dd {
     font-size: 1rem;
+  }
+
+  .btc-chart-frame {
+    height: 22rem;
   }
 }
 
