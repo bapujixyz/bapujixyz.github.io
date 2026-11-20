@@ -10,10 +10,6 @@
 #   thumbnail_full: optional — true to show the thumbnail at full column width
 
 
-- title: Bitcoin
-  url: /bitcoin/
-  type: Dashboard
-
 - title: Dark Traits Activated by Divorce
   url: /files/Dark%20Traits%20Activated%20by%20Divorce.pdf
   type: PDF
