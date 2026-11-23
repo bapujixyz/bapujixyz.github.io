@@ -10,6 +10,13 @@
 #   thumbnail_full: optional — true to show the thumbnail at full column width
 
 
+- title: "Is Gender Dysphoria Ego-Syntonic or Ego-Dystonic? Therapist + Detransitioner Explain"
+  url: https://www.youtube.com/watch?v=YmXreDkYQuQ
+  type: YouTube video
+  thumbnail: /images/ego-syntonic-dystonic-chart.jpg
+  thumbnail_full: true
+  thumbnail_alt: "Chart by Stephanie Winn, LMFT: ego-syntonic vs. ego-dystonic feelings about gender identity from age 15 to 26, from 'Am I trans?' through peak trans ideation to 'Am I detrans?' and brain maturity"
+
 - title: "Number of teens who identify themselves as gay or bisexual is in ‘free fall’"
   url: https://archive.ph/NBfx4
   type: Washington Post article
@@ -33,13 +40,6 @@
 - title: Dr. Josef Witt-Doerring's YouTube channel on dangers of psychiatric medications
   url: https://www.youtube.com/@taperclinic
   type: YouTube channel
-
-- title: "Is Gender Dysphoria Ego-Syntonic or Ego-Dystonic? Therapist + Detransitioner Explain"
-  url: https://www.youtube.com/watch?v=YmXreDkYQuQ
-  type: YouTube video
-  thumbnail: /images/ego-syntonic-dystonic-chart.jpg
-  thumbnail_full: true
-  thumbnail_alt: "Chart by Stephanie Winn, LMFT: ego-syntonic vs. ego-dystonic feelings about gender identity from age 15 to 26, from 'Am I trans?' through peak trans ideation to 'Am I detrans?' and brain maturity"
 
 - title: "44 Harsh Truths About The Game Of Life - Naval Ravikant (4K)"
   url: https://www.youtube.com/watch?v=KyfUysrNaco
